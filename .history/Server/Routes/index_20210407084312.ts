@@ -4,7 +4,8 @@ const router = express.Router();
 export default router;
 
 // Contact Model
-import Contact from "../Models/contact"; // Contact Alias
+import * as ContactModel from "../Models/contact";
+const Contact = ContactModel.Model; // Contact Alias
 
 
 /* GET home page - with / */

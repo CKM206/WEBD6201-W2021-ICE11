@@ -14,7 +14,7 @@ const app = express();
 export default app;
 
 // DB configuration
-import * as DBConfig from './db';
+import DBConfig from './db';
 mongoose.connect(DBConfig.Path, {useNewUrlParser: true, useUnifiedTopology: true});
 
 const db = mongoose.connection;

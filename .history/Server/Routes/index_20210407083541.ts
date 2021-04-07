@@ -1,10 +1,10 @@
 // Express Configuration
 import express from 'express';
-const router = express.Router();
-export default router;
+export const router = express.Router();
 
 // Contact Model
-import Contact from "../Models/contact"; // Contact Alias
+import * as ContactModel from "../Models/contact";
+const Contact = ContactModel.Model; // Contact Alias
 
 
 /* GET home page - with / */

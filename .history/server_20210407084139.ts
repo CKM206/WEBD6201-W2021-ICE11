@@ -22,7 +22,7 @@ app.set('port', port);
  * Create HTTP server.
  */
 
-let server = http.createServer(app);
+let server = http.createServer(AppConfig.app);
 
 /**
  * Listen on provided port, on all network interfaces.

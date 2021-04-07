@@ -34,7 +34,7 @@ db.once('open', function() {
 });
 
 
-// Setup View Engine
+// view engine setup
 app.set('views', path.join(__dirname, '../Views/'));
 app.set('view engine', 'ejs');
 
@@ -66,7 +66,6 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// Router Config
 app.use('/', indexRouter);
 
 // catch 404 and forward to error handler

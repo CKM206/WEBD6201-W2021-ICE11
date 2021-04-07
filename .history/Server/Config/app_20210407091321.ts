@@ -34,7 +34,7 @@ db.once('open', function() {
 });
 
 
-// Setup View Engine
+// view engine setup
 app.set('views', path.join(__dirname, '../Views/'));
 app.set('view engine', 'ejs');
 
@@ -45,28 +45,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../../Client/')));
 app.use(express.static(path.join(__dirname, '../../node_modules/')));
 
-// Setup Express Session
-app.use(session({
-  secret: DBConfig.Secret,
-  saveUninitialized: false,
-  resave: false
-}));
-
-// Initialize Flash
-app.use(flash());
-
-// Initialize Passport
-app.use(passport.initialize());
-app.use(passport.session());
-
-// Implement an Auth Strategy (Local Strategy)
-passport.use(User.createStrategy());
-
-// Serialize and Deserialize User Data
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
-
-// Router Config
 app.use('/', indexRouter);
 
 // catch 404 and forward to error handler

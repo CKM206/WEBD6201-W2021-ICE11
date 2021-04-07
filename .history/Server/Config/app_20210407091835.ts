@@ -34,7 +34,7 @@ db.once('open', function() {
 });
 
 
-// Setup View Engine
+// view engine setup
 app.set('views', path.join(__dirname, '../Views/'));
 app.set('view engine', 'ejs');
 
@@ -62,11 +62,6 @@ app.use(passport.session());
 // Implement an Auth Strategy (Local Strategy)
 passport.use(User.createStrategy());
 
-// Serialize and Deserialize User Data
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
-
-// Router Config
 app.use('/', indexRouter);
 
 // catch 404 and forward to error handler

@@ -11,9 +11,6 @@ import { DisplayAboutPage, DisplayContactPage, DisplayHomePage, DisplayLoginPage
          DisplayProjectsPage, DisplayRegisterPage, DisplayServicesPage, ProcessLoginPage, 
          ProcessLogoutPage, ProcessRegisterPage } from "../Controllers/index";
 
-/************************ 
- * GET Page Requests
- ************************/
 
 /* GET home (/) page - with / */
 router.get('/', DisplayHomePage);
@@ -39,14 +36,17 @@ router.get('/login', DisplayLoginPage);
 /* GET register page - with /register */
 router.get('/register', DisplayRegisterPage);
 
-/************************ 
- * POST Page Requests
- ************************/
+/**************** Temporary routes for authentication and registration *********************/
+/* GET login page - with /login */
+router.post('/login', function(req, res, next) 
+{
+  res.redirect('/contact-list');
+});
 
 /* POST Login page - with /login */
 router.post('/login', ProcessLoginPage);
 
-/* Process logout page - with /logout */
+/* GET logout page - with /logout */
 router.get('/logout', ProcessLogoutPage);
 
 /* POST Register page - with /register */

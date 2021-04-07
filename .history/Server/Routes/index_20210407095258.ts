@@ -11,9 +11,6 @@ import { DisplayAboutPage, DisplayContactPage, DisplayHomePage, DisplayLoginPage
          DisplayProjectsPage, DisplayRegisterPage, DisplayServicesPage, ProcessLoginPage, 
          ProcessLogoutPage, ProcessRegisterPage } from "../Controllers/index";
 
-/************************ 
- * GET Page Requests
- ************************/
 
 /* GET home (/) page - with / */
 router.get('/', DisplayHomePage);
@@ -39,10 +36,7 @@ router.get('/login', DisplayLoginPage);
 /* GET register page - with /register */
 router.get('/register', DisplayRegisterPage);
 
-/************************ 
- * POST Page Requests
- ************************/
-
+/**************** Temporary routes for authentication and registration *********************/
 /* POST Login page - with /login */
 router.post('/login', ProcessLoginPage);
 

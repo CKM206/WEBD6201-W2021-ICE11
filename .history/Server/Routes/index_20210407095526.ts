@@ -12,7 +12,7 @@ import { DisplayAboutPage, DisplayContactPage, DisplayHomePage, DisplayLoginPage
          ProcessLogoutPage, ProcessRegisterPage } from "../Controllers/index";
 
 /************************ 
- * GET Page Requests
+ * GET Pages
  ************************/
 
 /* GET home (/) page - with / */
@@ -40,7 +40,7 @@ router.get('/login', DisplayLoginPage);
 router.get('/register', DisplayRegisterPage);
 
 /************************ 
- * POST Page Requests
+ * POST Pages
  ************************/
 
 /* POST Login page - with /login */

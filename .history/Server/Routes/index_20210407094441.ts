@@ -7,15 +7,10 @@ export default router;
 import Contact from "../Models/contact"; // Contact Alias
 
 // Index Controller Instance
-import { DisplayAboutPage, DisplayContactPage, DisplayHomePage, DisplayLoginPage, 
-         DisplayProjectsPage, DisplayRegisterPage, DisplayServicesPage, ProcessLoginPage, 
-         ProcessLogoutPage, ProcessRegisterPage } from "../Controllers/index";
+import { DisplayAboutPage, DisplayContactPage, DisplayHomePage, DisplayLoginPage, DisplayProjectsPage, DisplayRegisterPage, DisplayServicesPage } from "../Controllers/index";
 
-/************************ 
- * GET Page Requests
- ************************/
 
-/* GET home (/) page - with / */
+/* GET home page - with / */
 router.get('/', DisplayHomePage);
 
 /* GET home page - with /home */
@@ -39,18 +34,20 @@ router.get('/login', DisplayLoginPage);
 /* GET register page - with /register */
 router.get('/register', DisplayRegisterPage);
 
-/************************ 
- * POST Page Requests
- ************************/
+/**************** Temporary routes for authentication and registration *********************/
+/* GET login page - with /login */
+router.post('/login', function(req, res, next) 
+{
+  res.redirect('/contact-list');
+});
 
-/* POST Login page - with /login */
-router.post('/login', ProcessLoginPage);
 
-/* Process logout page - with /logout */
-router.get('/logout', ProcessLogoutPage);
 
-/* POST Register page - with /register */
-router.post('/register', ProcessRegisterPage);
+/* GET logout page - with /logout */
+router.get('/logout', function(req, res, next) 
+{
+  res.render('index', { title: 'Logout', page: 'logout', displayName: ''    });
+});
 
 
 /********************** temporary routes - contact-list related pages **********************/

@@ -61,7 +61,7 @@ export function DisplayRegisterPage(req:Request, res:Response, next:NextFunction
         res.render('index', 
         { title: 'Register', 
         page: 'register', 
-        messages: req.flash('registerMessage'),  
+        messages: req.flash('loginMessage'),  
         displayName: req.user ? req.user.displayName : ''     
     });
 

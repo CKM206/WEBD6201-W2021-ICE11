@@ -58,12 +58,7 @@ export function DisplayRegisterPage(req:Request, res:Response, next:NextFunction
     // Check if a user is logged in.
     //-If not, render the login page, otherwise redirect to contact-list
     if (!req.user)
-        res.render('index', 
-        { title: 'Register', 
-        page: 'register', 
-        messages: req.flash('registerMessage'),  
-        displayName: req.user ? req.user.displayName : ''     
-    });
+        res.render('index', { title: 'Register', page: 'register', displayName: ''    });
 
     return res.redirect("./contact-list");
 }

@@ -97,6 +97,7 @@ namespace core
 
     function displayContactList() :void
     {
+
       // confirm deletion
       $("a.delete").on("click", function(event: any){
         if(!confirm("Are you sure?"))
@@ -145,6 +146,8 @@ namespace core
         case 'login':
           displayLogin();
           break;
+        case 'logout':
+          performLogout();
         case 'register':
           break;
         case 'contact-list':

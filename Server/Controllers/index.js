@@ -40,7 +40,11 @@ function DisplayLoginPage(req, res, next) {
 exports.DisplayLoginPage = DisplayLoginPage;
 function DisplayRegisterPage(req, res, next) {
     if (!req.user)
-        res.render('index', { title: 'Register', page: 'register', displayName: '' });
+        res.render('index', { title: 'Register',
+            page: 'register',
+            messages: req.flash('registerMessage'),
+            displayName: req.user ? req.user.displayName : ''
+        });
     return res.redirect("./contact-list");
 }
 exports.DisplayRegisterPage = DisplayRegisterPage;

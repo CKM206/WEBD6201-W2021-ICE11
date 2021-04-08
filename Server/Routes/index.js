@@ -24,7 +24,7 @@ router.get('/contact-list', function (req, res, next) {
         if (err) {
             return console.error(err);
         }
-        res.render('index', { title: 'Contact List', page: 'contact-list', contacts: contacts, displayName: 'temp' });
+        return res.render('index', { title: 'Contact List', page: 'contact-list', contacts: contacts, displayName: 'temp' });
     });
 });
 router.get('/edit/:id', function (req, res, next) {

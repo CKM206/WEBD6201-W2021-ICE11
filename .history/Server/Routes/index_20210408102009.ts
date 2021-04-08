@@ -63,7 +63,7 @@ router.get('/contact-list', function(req, res, next)
       {
         return console.error(err);
       }
-      return res.render('index', { title: 'Contact List', page: 'contact-list', contacts: contacts, displayName: 'temp'  });
+      return res.render('index', { title: 'Contact List', page: 'contact-list', contacts: contacts, displayName: ''  });
     });
 
 });

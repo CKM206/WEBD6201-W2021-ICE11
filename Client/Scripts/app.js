@@ -90,6 +90,7 @@ var core;
                 displayLogin();
                 break;
             case 'register':
+                displayRegister();
                 break;
             case 'contact-list':
                 displayContactList();

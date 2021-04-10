@@ -6,7 +6,15 @@ import passport from 'passport';
 import User from '../Models/user';
 
 // Helper Function
-import {UserDisplayName} from '../Util/index';
+function UserDisplayName(req: Request): string
+{
+    if (req.user)
+    {
+        let user = req.user as UserDocument;
+        return user.displayName.toString();
+    }
+    return '';
+}
 
 /************************ 
  * Display Page Functions

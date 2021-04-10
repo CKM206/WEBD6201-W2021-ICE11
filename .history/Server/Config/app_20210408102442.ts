@@ -69,7 +69,6 @@ passport.deserializeUser(User.deserializeUser());
 
 // Router Config
 app.use('/', indexRouter);
-app.use('/contact-list', contactListRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

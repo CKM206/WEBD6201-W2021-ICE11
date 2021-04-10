@@ -22,12 +22,12 @@ function DisplayEditPage(req, res, next) {
             console.error(err);
             res.end(err);
         }
-        res.render('index', { title: 'Edit', page: 'edit', contact: contactToEdit, displayName: index_1.UserDisplayName(req) });
+        return res.render('index', { title: 'Edit', page: 'edit', contact: contactToEdit, displayName: index_1.UserDisplayName(req) });
     });
 }
 exports.DisplayEditPage = DisplayEditPage;
 function DisplayAddPage(req, res, next) {
-    res.render('index', { title: 'Add', page: 'edit', contact: '', displayName: index_1.UserDisplayName(req) });
+    return res.render('index', { title: 'Add', page: 'edit', contact: '', displayName: index_1.UserDisplayName(req) });
 }
 exports.DisplayAddPage = DisplayAddPage;
 function ProcessEditPage(req, res, next) {
@@ -43,7 +43,7 @@ function ProcessEditPage(req, res, next) {
             console.error(err);
             res.end(err);
         }
-        res.redirect('/contact-list');
+        return res.redirect('/contact-list');
     });
 }
 exports.ProcessEditPage = ProcessEditPage;

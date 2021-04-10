@@ -68,9 +68,9 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 // Router Config
-import {AuthGuard} from '../Util/index';  // Import AuthGuard Function
+import {AuthGuard} from '../Util/index';
 app.use('/', indexRouter);
-app.use('/contact-list', AuthGuard, contactListRouter); // Protect ALL routes in the Contact-list Router
+app.use('/contact-list', AuthGuard, contactListRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

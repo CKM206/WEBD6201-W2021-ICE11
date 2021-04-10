@@ -3,9 +3,8 @@ import express, {Request, Response, NextFunction} from 'express';
 // Contact Model
 import Contact from "../Models/contact"; // Contact Alias
 
-// Util Functions: (Helper)
+// Helper Function
 import {UserDisplayName} from '../Util/index';
-
 
 /************************ 
  * Display Page Functions

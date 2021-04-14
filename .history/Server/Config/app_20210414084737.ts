@@ -20,7 +20,7 @@ import cors from 'cors';
 import passportJWT from 'passport-jwt';
 
 // JWT Objects
-let JWTStrategy = passportJWT.Strategy;
+let JWTstrategy = passportJWT.Strategy;
 let ExtractJWT = passportJWT.ExtractJwt;
 
 // Authentication Messaging Module & Error Management
@@ -54,8 +54,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../../Client/')));
 app.use(express.static(path.join(__dirname, '../../node_modules/')));
 
-app.use(cors());
-
 // Setup Express Session
 app.use(session({
   secret: DBConfig.Secret,
@@ -76,25 +74,6 @@ passport.use(User.createStrategy());
 // Serialize and Deserialize User Data
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
-
-let jwtOptions =
-{
-  jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
-  secretOrKey: DBConfig.Secret 
-}
-
-let strategy = new JWTStrategy(jwtOptions, (jwt_payload, done) =>
-{
-  User.findById(jwt_payload.id)
-  .then(user=> {
-    return done(null, user);
-  })
-  .catch(err => {
-    return done(null, false);
-  });
-});
-
-passport.use(strategy);
 
 // Router Config
 import {AuthGuard} from '../Util/index';  // Import AuthGuard Function

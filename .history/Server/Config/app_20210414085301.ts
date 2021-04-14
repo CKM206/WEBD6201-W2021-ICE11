@@ -83,18 +83,7 @@ let jwtOptions =
   secretOrKey: DBConfig.Secret 
 }
 
-let strategy = new JWTStrategy(jwtOptions, (jwt_payload, done) =>
-{
-  User.findById(jwt_payload.id)
-  .then(user=> {
-    return done(null, user);
-  })
-  .catch(err => {
-    return done(null, false);
-  });
-});
-
-passport.use(strategy);
+let strategy = new JWTStrategy(jwtOptions)
 
 // Router Config
 import {AuthGuard} from '../Util/index';  // Import AuthGuard Function

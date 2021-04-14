@@ -20,7 +20,7 @@ import cors from 'cors';
 import passportJWT from 'passport-jwt';
 
 // JWT Objects
-let JWTStrategy = passportJWT.Strategy;
+let JWTstrategy = passportJWT.Strategy;
 let ExtractJWT = passportJWT.ExtractJwt;
 
 // Authentication Messaging Module & Error Management
@@ -76,25 +76,6 @@ passport.use(User.createStrategy());
 // Serialize and Deserialize User Data
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
-
-let jwtOptions =
-{
-  jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
-  secretOrKey: DBConfig.Secret 
-}
-
-let strategy = new JWTStrategy(jwtOptions, (jwt_payload, done) =>
-{
-  User.findById(jwt_payload.id)
-  .then(user=> {
-    return done(null, user);
-  })
-  .catch(err => {
-    return done(null, false);
-  });
-});
-
-passport.use(strategy);
 
 // Router Config
 import {AuthGuard} from '../Util/index';  // Import AuthGuard Function

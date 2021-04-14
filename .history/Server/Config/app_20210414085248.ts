@@ -77,24 +77,13 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-let jwtOptions =
+let jwtOption =
 {
   jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
   secretOrKey: DBConfig.Secret 
 }
 
-let strategy = new JWTStrategy(jwtOptions, (jwt_payload, done) =>
-{
-  User.findById(jwt_payload.id)
-  .then(user=> {
-    return done(null, user);
-  })
-  .catch(err => {
-    return done(null, false);
-  });
-});
-
-passport.use(strategy);
+let strategy = new JWTstrategy
 
 // Router Config
 import {AuthGuard} from '../Util/index';  // Import AuthGuard Function

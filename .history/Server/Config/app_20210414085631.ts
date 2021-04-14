@@ -94,8 +94,6 @@ let strategy = new JWTStrategy(jwtOptions, (jwt_payload, done) =>
   });
 });
 
-passport.use(strategy);
-
 // Router Config
 import {AuthGuard} from '../Util/index';  // Import AuthGuard Function
 app.use('/', indexRouter);

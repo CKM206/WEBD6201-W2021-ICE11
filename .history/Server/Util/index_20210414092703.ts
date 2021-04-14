@@ -24,7 +24,7 @@ export function AuthGuard(req: Request, res: Response, next: NextFunction): void
     next();
 }
 
-export function GenerateToken(user: UserDocument): string
+export function GenerateToken(user: any): string
 {
     const payload = 
         {
@@ -38,6 +38,6 @@ export function GenerateToken(user: UserDocument): string
         {
             expiresIn: 60480 // Expires in 1 week
         }
-
+        
     return jwt.sign(payload, DBConfig.Secret, jwtOptions);    
 }

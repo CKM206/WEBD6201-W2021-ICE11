@@ -6,9 +6,11 @@ import passport from 'passport';
 import User from '../Models/user';
 
 // Helper Function
-import {UserDisplayName, GenerateToken} from '../Util/index';
+import {UserDisplayName} from '../Util/index';
 
-
+// Enable JWT
+import jwt from 'jsonwebtoken';
+import * as DBConfig from '../Config/db';
 
 /************************ 
  * Display Page Functions
@@ -99,14 +101,26 @@ export function ProcessLoginPage(req:Request, res:Response, next:NextFunction): 
                 return next(err);
             }
 
-            
+            const payload = 
+            {
+                id: user._id,
+                displayName: user.displayName,
+                username: user.username,
+                emailAddress: user.emailAddress
+            }
 
-            const authToken = GenerateToken(user);
-            console.log("WHY NO LOG?!?!");
+            const jwtOptions = 
+            {
+                expiresIn: 60480 // Expires in 1 week
+            }
+
+            const authToken = jwt.sign(payload, DBConfig.Secret, jwtOptions)
+
+            console.log(authToken);
 
             // If we used a Front-End (Anglular, React, Vue)
             //return res.json({success: true, msg: 'User Logged in Successfully!', 
-            //                 user: user, token: authToken});
+            //                 user: payload, token: authToken});
 
             // We arent, so we just redirect
             return res.redirect('/contact-list');
@@ -156,7 +170,6 @@ export function ProcessRegisterPage(req:Request, res:Response, next:NextFunction
         // Since we done use a front end, just authenticate and redirect
         // Automatically Authenticate the User
         return passport.authenticate('local')(req, res, () => {
-            //return res.json({success: true, msg: 'User Logged in Successfully!', user: newUser, token: GenerateToken(user)});
             return res.redirect('/contact-list');
         });
 

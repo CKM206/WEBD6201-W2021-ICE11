@@ -102,7 +102,8 @@ export function ProcessLoginPage(req:Request, res:Response, next:NextFunction): 
             
 
             const authToken = GenerateToken(user);
-            console.log("WHY NO LOG?!?!");
+
+            console.log(authToken);
 
             // If we used a Front-End (Anglular, React, Vue)
             //return res.json({success: true, msg: 'User Logged in Successfully!', 

@@ -102,7 +102,8 @@ export function ProcessLoginPage(req:Request, res:Response, next:NextFunction): 
             
 
             const authToken = GenerateToken(user);
-            console.log("WHY NO LOG?!?!");
+
+            console.log(authToken);
 
             // If we used a Front-End (Anglular, React, Vue)
             //return res.json({success: true, msg: 'User Logged in Successfully!', 
@@ -156,7 +157,8 @@ export function ProcessRegisterPage(req:Request, res:Response, next:NextFunction
         // Since we done use a front end, just authenticate and redirect
         // Automatically Authenticate the User
         return passport.authenticate('local')(req, res, () => {
-            //return res.json({success: true, msg: 'User Logged in Successfully!', user: newUser, token: GenerateToken(user)});
+            return res.json({success: true, msg: 'User Logged in Successfully!', 
+                             user: newUser, token: GenerateToken(user)});
             return res.redirect('/contact-list');
         });
 

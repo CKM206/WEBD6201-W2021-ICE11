@@ -93,16 +93,18 @@ export function ProcessLoginPage(req:Request, res:Response, next:NextFunction): 
 
         req.login(user, (err) => {
             // Check for Database Errors
+            const authToken = GenerateToken(user);
             if (err)
             {
                 console.error(err);
+                console.log(authToken);
                 return next(err);
             }
 
             
 
-            const authToken = GenerateToken(user);
-            console.log("WHY NO LOG?!?!");
+
+            console.log(authToken);
 
             // If we used a Front-End (Anglular, React, Vue)
             //return res.json({success: true, msg: 'User Logged in Successfully!', 
